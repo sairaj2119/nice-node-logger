@@ -1,0 +1,23 @@
+{
+  "name": "nice-node-logger",
+  "version": "0.0.7",
+  "description": "Simple logger that prints line number and file of your log",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "node",
+    "logger"
+  ],
+  "files": [
+    "dist/**/*"
+  ],
+  "author": "sairaj2119",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.2"
+  }
+}
