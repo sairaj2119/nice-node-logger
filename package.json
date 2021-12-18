@@ -1,6 +1,6 @@
 {
   "name": "nice-node-logger",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Simple logger that prints line number and file of your log",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
