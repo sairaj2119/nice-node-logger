@@ -1,10 +1,13 @@
 import os from 'os'
 
-export type Logger = (msg: string) => void
+export type Logger = (message?: any, ...optionalParams: any[]) => void
 
 const splitChar = os.platform() === 'win32' ? '\\' : '/'
 
-export const logger: Logger = (msg: string): void => {
+export const logger: Logger = (
+  message?: any,
+  ...optionalParams: any[]
+): void => {
   try {
     throw new Error()
   } catch (err: any) {
@@ -13,6 +16,6 @@ export const logger: Logger = (msg: string): void => {
     const splitArr = fileTrace.split(splitChar)
     const fileName = splitArr[splitArr.length - 1]
     const final = fileName.split(':').splice(0, 2).join(':')
-    console.log(`${final} => ${msg}`)
+    console.log(`${final} => `, message, ...optionalParams)
   }
 }
