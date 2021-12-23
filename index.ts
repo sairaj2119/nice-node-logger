@@ -4,28 +4,7 @@ import { colors } from './colors'
 export type LoggerFunction = (message?: any, ...optionalParams: any[]) => void
 export type LogType = 'log' | 'info' | 'warn' | 'error'
 
-const splitChar = platform() === 'win32' ? '\\' : '/'
-
-/*
-@deprecated
-*/
-export const logger: LoggerFunction = (
-  message?: any,
-  ...optionalParams: any[]
-): void => {
-  try {
-    throw new Error()
-  } catch (err: any) {
-    const stack = err.stack
-    let fileTrace = stack.split('\n').slice(1)[1].trim()
-    const splitArr = fileTrace.split(splitChar)
-    const fileName = splitArr[splitArr.length - 1]
-    const final = fileName.split(':').splice(0, 2).join(':')
-    console.log(`${final} => `, message, ...optionalParams)
-  }
-}
-
-class Logger {
+export class Logger {
   private get_file_meta(stack: any) {
     let fileTrace = stack.split('\n').slice(1)[1].trim()
     const splitArr = fileTrace.split(this.split_char)
@@ -96,4 +75,4 @@ class Logger {
   }
 }
 
-export default new Logger()
+export const logger = new Logger()
