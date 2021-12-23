@@ -1,5 +1,5 @@
 {
-  "name": "nice-node-logger",
+  "name": "node-dev-logger",
   "version": "0.1.1",
   "description": "Simple logger that prints line number and file of your log",
   "main": "dist/index.js",
@@ -15,12 +15,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sairaj2119/nice-node-logger.git"
+    "url": "git+https://github.com/sairaj2119/node-dev-logger.git"
   },
   "bugs": {
-    "url": "https://github.com/sairaj2119/nice-node-logger/issues"
+    "url": "https://github.com/sairaj2119/node-dev-logger/issues"
   },
-  "homepage": "https://github.com/sairaj2119/nice-node-logger#readme",
+  "homepage": "https://github.com/sairaj2119/node-dev-logger#readme",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build"
