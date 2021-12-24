@@ -12,6 +12,22 @@ export class Logger {
     const final = fileName.split(':').splice(0, 2).join(':')
     return final
   }
+
+  private get_output = (
+    type: LogType,
+    file_meta: string,
+    message?: any,
+    ...optionalParams: any[]
+  ) => {
+    return [
+      colors[type],
+      `\b${file_meta} => `,
+      message,
+      ...optionalParams,
+      colors.reset,
+    ]
+  }
+
   private split_char = platform() === 'win32' ? '\\' : '/'
 
   public log(message?: any, ...optionalParams: any[]): void {
@@ -19,13 +35,13 @@ export class Logger {
       throw new Error()
     } catch (err: any) {
       const file_meta = this.get_file_meta(err.stack)
-      console['log'](
-        colors.log,
-        `${file_meta} => `,
+      const output = this.get_output(
+        'log',
+        file_meta,
         message,
-        ...optionalParams,
-        colors.reset
+        ...optionalParams
       )
+      console['log'](...output)
     }
   }
 
@@ -34,13 +50,13 @@ export class Logger {
       throw new Error()
     } catch (err: any) {
       const file_meta = this.get_file_meta(err.stack)
-      console['warn'](
-        colors.warn,
-        `${file_meta} => `,
+      const output = this.get_output(
+        'warn',
+        file_meta,
         message,
-        ...optionalParams,
-        colors.reset
+        ...optionalParams
       )
+      console['warn'](...output)
     }
   }
 
@@ -49,13 +65,13 @@ export class Logger {
       throw new Error()
     } catch (err: any) {
       const file_meta = this.get_file_meta(err.stack)
-      console['info'](
-        colors.info,
-        `${file_meta} => `,
+      const output = this.get_output(
+        'info',
+        file_meta,
         message,
-        ...optionalParams,
-        colors.reset
+        ...optionalParams
       )
+      console['info'](...output)
     }
   }
 
@@ -64,13 +80,13 @@ export class Logger {
       throw new Error()
     } catch (err: any) {
       const file_meta = this.get_file_meta(err.stack)
-      console['error'](
-        colors.error,
-        `${file_meta} => `,
+      const output = this.get_output(
+        'error',
+        file_meta,
         message,
-        ...optionalParams,
-        colors.reset
+        ...optionalParams
       )
+      console['error'](...output)
     }
   }
 }
