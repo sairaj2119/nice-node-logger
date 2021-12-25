@@ -1,4 +1,4 @@
-# nice-node-logger
+# node-dev-logger
 
 Simple logger for Node.js that prints the filename and line number of the log
 
